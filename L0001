@@ -1,0 +1,15 @@
+// Leetcode Problem - Two Sum
+//Solution:
+let nums = [5,7,10,16]
+let target = 12
+var twoSum = function(nums, target) {
+     const obj = {}; // {'5':0,'7':1,'10':2,'16':3}
+     for (let i = 0; i < nums.length; i++) {
+     const diff = target - nums[i];
+     if (diff in obj){
+       return [obj[diff], i];
+     }
+     obj[nums[i]] = i;
+   }
+};
+console.log(twoSum(nums,target))
