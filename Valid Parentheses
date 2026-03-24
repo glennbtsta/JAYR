@@ -1,0 +1,20 @@
+class Solution:
+    def isValid(self,s):
+        stack = []
+        # Map closing brackets to their corresponding opening brackets
+        closeToOpen = {")": "(", "]": "[", "}": "{"}
+
+        for c in s:
+            if c in closeToOpen:
+                # If we have a closing bracket, check the top of the stack
+                if stack and stack[-1] == closeToOpen[c]:
+                    stack.pop()
+                else:
+                    # If stack is empty or doesn't match, it's invalid
+                    return False
+            else:
+                # If it's an opening bracket, push it onto the stack
+                stack.append(c)
+        
+        # Return True only if all brackets were matched and popped
+        return True if not stack else False
